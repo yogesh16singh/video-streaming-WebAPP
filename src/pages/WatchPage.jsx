@@ -12,8 +12,8 @@ const WatchPage = () => {
                     frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen>
                 </iframe>
-
-                <CommentsContainer></CommentsContainer>
+                <h1 className='font-bold text-lg mx-4 my-3  w-1/2'>Comments</h1>
+                <CommentsContainer id={seachParams.get("v")}></CommentsContainer>
             </div>
         </>
     )

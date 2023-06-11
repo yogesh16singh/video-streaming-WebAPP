@@ -27,7 +27,7 @@ const Navbar = () => {
         const json = await data.json();
         console.log(json[1]);
         setSearchResult(json[1]);
-        setShowSearchResult(true)
+        // setShowSearchResult(true)
     }
 
 
