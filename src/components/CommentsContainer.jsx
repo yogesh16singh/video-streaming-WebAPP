@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { YOUTUBE_COMMENTSDATA_API } from '../../helper';
 import { Comments } from './Comments';
+import Replie from './replie';
 
 const CommentsContainer = (props) => {
     const [commentsData, setCommentsData] = useState([]);
@@ -27,9 +28,18 @@ const CommentsContainer = (props) => {
         <>
 
             {showComment && commentsData.items.map((Comment) => {
-                return <>
-                    <Comments Comment={Comment} key={Comment.snippet.topLevelComment.id}></Comments>
-                </>
+                return <div key={Comment.snippet.topLevelComment.id}> <Comments Comment={Comment} ></Comments>
+                    {(Comment.snippet.totalReplyCount > 0) ? <h1 className='mx-24 font-semibold text-lg'>Replies -</h1> : null}
+                    {(Comment.snippet.totalReplyCount > 0) ?
+
+                        Comment.replies.comments.map((replie) => {
+
+                            return <div className='mx-24' key={replie.id}><Replie replie={replie}></Replie></div>
+                        })
+
+                        : null
+                    }
+                </div>
             })}
 
         </>
